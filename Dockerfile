@@ -3,12 +3,13 @@ FROM ubuntu:22.04 AS builder
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install build dependencies
+# Install build dependencies + CA certificates for git clone over HTTPS
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
+    ca-certificates \
     cmake \
-    git \
     g++-12 \
+    git \
     libssl-dev \
     zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
@@ -34,6 +35,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Install only runtime dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
     libssl3 \
     zlib1g \
     && rm -rf /var/lib/apt/lists/*
@@ -54,9 +56,7 @@ RUN mkdir -p /app/data/brackets && chown -R bot:bot /app/data
 
 USER bot
 
-# Railway sets PORT but our bot doesn't use HTTP.
-# We only need the BOT_TOKEN env var.
-ENV BOT_TOKEN=""
+# BOT_TOKEN is set via Railway environment variables — never in Dockerfile!
 
 ENTRYPOINT ["/app/discord_bot"]
 CMD ["/app/config.json"]

@@ -83,4 +83,4 @@ target_link_libraries(discord_bot PRIVATE botlib)
 # ── Install ───────────────────────────────────────────────────────────────────
 
 install(TARGETS discord_bot RUNTIME DESTINATION bin)
-install(DIRECTORY config.example.json DESTINATION etc RENAME config.json)
+install(FILES config.example.json DESTINATION etc RENAME config.json)

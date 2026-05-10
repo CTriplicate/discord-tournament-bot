@@ -1,0 +1,15 @@
+{
+    "bot_token": "YOUR_BOT_TOKEN_HERE",
+    "database_path": "data/bot_data.json",
+    "bracket_output_dir": "data/brackets",
+    "admin_roles": [
+        "1234567890123456789"
+    ],
+    "warning_configs": {
+        "1234567890123456789": {
+            "warning_roles": [
+                "9876543210987654321"
+            ]
+        }
+    }
+}

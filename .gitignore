@@ -1,0 +1,26 @@
+# Build
+build/
+cmake-build-*/
+*.o
+*.a
+*.so
+*.out
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Data (runtime)
+data/
+*.json
+!config.example.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Binaries
+discord_bot
